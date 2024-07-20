@@ -1,14 +1,13 @@
-from OrderBook import OrderBook
 from Order import Order
+from OrderBook import OrderBook
+
 
 def main():
     orders = [
-        # {"type": "BUY", "price": 1500, "quantity": 2, "contract": "GCQ4 Comdty"},
-        # {"type": "SELL", "price": 1500, "quantity": 2, "contract": "GCQ4 Comdty"},
-        # {"type": "BUY", "price": 1550, "quantity": 3, "contract": "GCZ4 Comdty"},
-        # {"type": "SELL", "price": 1550, "quantity": 1, "contract": "GCZ4 Comdty"}
-        {"type": "BUY", "price": 102.5, "quantity": 10, "contract": "GCZ4 Comdty"},
-        {"type": "SELL", "price": 101.5, "quantity": 5, "contract": "GCZ4 Comdty"}
+        {"type": "BUY", "price": 1500, "quantity": 2, "contract": "GCQ4 Comdty"},
+        {"type": "SELL", "price": 1500, "quantity": 2, "contract": "GCQ4 Comdty"},
+        {"type": "BUY", "price": 1550, "quantity": 3, "contract": "GCZ4 Comdty"},
+        {"type": "SELL", "price": 1550, "quantity": 1, "contract": "GCZ4 Comdty"}
     ]
     order_book = OrderBook()
     for order in orders:
