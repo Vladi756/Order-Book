@@ -3,9 +3,6 @@
 This project implements a simplified Central Limit Order Book (CLOB) in Python. The order book handles buy and sell orders for financial instruments, matches orders based on price, and maintains the state of outstanding orders and matched orders.
 
 ## Table of Contents
-
-- [Central Limit Order Book (CLOB) Project](#central-limit-order-book-clob-project)
-  - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -75,4 +72,12 @@ The display method prints the state of the order book, showing matched orders an
 # Display the current state of the order book
 order_book.display()
 
+````
+The result of the above looks like this: 
+````commandline
+GCZ4 Comdty: 
+BUY ORDERS:
+Price: 102.5, Quantity: 10, Contract: GCZ4 Comdty
+SELL ORDERS:
+Price: 101.5, Quantity: 5, Contract: GCZ4 Comdty
 ````

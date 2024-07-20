@@ -57,6 +57,10 @@ class OrderBook:
                 opposite_order.quantity -= match_quantity
                 if opposite_order.quantity == 0:
                     opposite_orders.pop(i)
+                else:
+                    i += 1
+            else:
+                i += 1
 
     def display(self):
         """
@@ -69,7 +73,10 @@ class OrderBook:
             buy_orders_by_contract[order.contract].append(order)
         for order in self.sell_orders:
             sell_orders_by_contract[order.contract].append(order)
-        for contract in sorted(self.matches):
+
+        all_contracts = set(buy_orders_by_contract.keys()).union(set(sell_orders_by_contract.keys())).union(set(self.matches.keys()))
+
+        for contract in sorted(all_contracts):
             for match in self.matches[contract]:
                 print(f'\n{match}')
             print(f"\n{contract}: ")
