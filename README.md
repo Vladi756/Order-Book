@@ -3,9 +3,6 @@
 This project implements a simplified Central Limit Order Book (CLOB) in Python. The order book handles buy and sell orders for financial instruments, matches orders based on price, and maintains the state of outstanding orders and matched orders.
 
 ## Table of Contents
-
-- [Central Limit Order Book (CLOB) Project](#central-limit-order-book-clob-project)
-  - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
