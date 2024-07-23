@@ -75,7 +75,7 @@ order_book.display()
 
 ````
 The result of the above looks like this: 
-````commandline
+````python
 GCZ4 Comdty: 
 BUY ORDERS:
 Price: 102.5, Quantity: 10, Contract: GCZ4 Comdty
