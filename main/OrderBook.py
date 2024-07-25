@@ -56,7 +56,7 @@ class OrderBook:
                 order.quantity -= match_quantity
                 opposite_order.quantity -= match_quantity
                 if opposite_order.quantity == 0:
-                    opposite_orders.pop(i)
+                    opposite_orders.pop(i)  # reduces the length of the list and shifts subsequent elements left - no need to increment i
                 else:
                     i += 1
             else:
