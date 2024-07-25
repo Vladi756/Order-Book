@@ -28,12 +28,12 @@ class OrderBook:
         :return: void
         """
         if order.is_buy():
-            self.match_order(order, self.sell_orders, lambda x, y: x == y)
+            self.match_order(order, self.sell_orders, lambda a, b, x, y: a == b and x == y)
             if order.quantity > 0:
                 self.buy_orders.append(order)
-            self.buy_orders.sort(key=lambda o: o.price, reverse=True)
+            self.buy_orders.sort(key=lambda o: o.price, reverse=True)  # sort the highest buy prices first
         else:
-            self.match_order(order, self.buy_orders, lambda x, y: x == y)
+            self.match_order(order, self.buy_orders, lambda a, b, x, y: a == b and x == y)
             if order.quantity > 0:
                 self.sell_orders.append(order)
             self.sell_orders.sort(key=lambda o: o.price)
@@ -49,7 +49,7 @@ class OrderBook:
         i = 0
         while i < len(opposite_orders) and order.quantity > 0:
             opposite_order = opposite_orders[i]
-            if order.contract == opposite_order.contract and match_condition(order.price, opposite_order.price):
+            if match_condition(order.contract, opposite_order.contract, order.price, opposite_order.price):
                 match_quantity = min(order.quantity, opposite_order.quantity)
                 (self.matches[order.contract].append(
                     f"Match: {opposite_order.side} {opposite_order.quantity}@{order.price} with {order.side} {order.quantity}@{order.price} on {order.contract}"))
