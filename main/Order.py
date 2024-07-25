@@ -2,16 +2,24 @@ class Order:
     """
       Represents an order in a financial trading system.
 
-      Attributes
-      ----------
-      side: str
+    Attributes
+    ----------
+    side: str
         The side of the order, either 'BUY' or 'SELL'.
-      price: float
+    price: float
         The price at which the order is placed.
-      quantity: int
+    quantity: int
         The quantity of the asset to be bought or sold.
-      contract: str
+    contract: str
         The contract associated with the order, such as a futures contract identifier.
+    product_code: str
+        The product code extracted from the contract.
+    month_code: str
+        The month code extracted from the contract.
+    market: str
+        The market associated with the order, extracted from the contract.
+    month_codes: dict
+        A dictionary mapping single-letter month codes to their full month names.
     """
 
     month_codes = {'F': 'January', 'G': 'February', 'H': 'March', 'J': 'April', 'K': 'May', 'M': 'June',
