@@ -11,13 +11,14 @@ This project implements a simplified Central Limit Order Book (CLOB) in Python. 
     - [Creating Orders](#creating-orders)
     - [Adding Orders to the Order Book](#adding-orders-to-the-order-book)
     - [Displaying the Order Book](#displaying-the-order-book)
+    - [Examples of Matched Orders](#examples-of-matched-orders)
 
 ## Features
 
 - Handles buy and sell orders.
 - Matches orders based on price and updates quantities accordingly.
 - Displays the state of the order book, including matched and outstanding orders.
-- Supports contracts for financial instruments (e.g., futures contracts).
+- Supports contracts for financial instruments (e.g. futures contracts).
 
 ## Getting Started
 
@@ -74,10 +75,57 @@ order_book.display()
 
 ````
 The result of the above looks like this: 
-````commandline
+````python
 GCZ4 Comdty: 
 BUY ORDERS:
 Price: 102.5, Quantity: 10, Contract: GCZ4 Comdty
 SELL ORDERS:
 Price: 101.5, Quantity: 5, Contract: GCZ4 Comdty
 ````
+
+### Examples of Matched Orders
+
+When orders are added that can be matched, the order book updates to reflect these matches. Here is an example: 
+
+````python
+from main.Order import Order
+from main.OrderBook import OrderBook
+
+# Create an OrderBook instance
+order_book = OrderBook()
+
+# Add matching orders
+buy_order1 = Order("BUY", 100.0, 10, "GCQ4 Comdty")
+sell_order1 = Order("SELL", 100.0, 5, "GCQ4 Comdty")
+order_book.add_order(buy_order1)
+order_book.add_order(sell_order1)
+
+# Add more matching orders
+buy_order2 = Order("BUY", 101.0, 10, "GCQ4 Comdty")
+sell_order2 = Order("SELL", 101.0, 10, "GCQ4 Comdty")
+order_book.add_order(buy_order2)
+order_book.add_order(sell_order2)
+
+# Display the current state of the order book
+order_book.display()
+````
+The result of the above display: 
+
+````python
+Match: BUY 10@100.0 with SELL 5@100.0 on GCQ4 Comdty
+
+GCQ4 Comdty:
+BUY ORDERS:
+Price: 100.0, Quantity: 5, Contract: GCQ4 Comdty
+
+Match: BUY 10@101.0 with SELL 10@101.0 on GCQ4 Comdty
+
+GCQ4 Comdty:
+No open orders.
+````
+In this example:
+
+- The first match shows that 10 units from the buy order are partially matched with 5 units from the sell order at a price of 100.0.
+- The second match shows that 10 units from the buy order are fully matched with 10 units from the sell order at a price of 101.0.-
+- The order book correctly updates to show the remaining quantity for partially matched orders and indicates when there are no open orders.
+
